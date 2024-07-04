@@ -14,7 +14,8 @@ def get_upcoming_birthdays(user_list: list) -> list:
     try:
         for user in user_list:
             date_obj = datetime.strptime(user["birthday"], "%Y.%m.%d").date().replace(year=today.year)
-            if date_obj - today <= timedelta(days=7):
+
+            if timedelta(days=0) <= date_obj - today <= timedelta(days=7):
                 if date_obj.weekday() == 5:
                     date_obj += timedelta(days=2)
                 elif date_obj.weekday() == 6:
